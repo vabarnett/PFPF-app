@@ -1,6 +1,6 @@
 #This file was added using the Flask documentation tutorial
 
-"""import sqlite3
+import sqlite3
 
 import click
 from Flask import current_app, g
@@ -31,9 +31,9 @@ def init_db():
 @with_appcontext
 def init_db_command():
 	#""Clear the existing data and create new tables."""
-"""	init_db()
+	init_db()
 	click.echo('Initialized the database.')
 
 def init_app(app):
 	app.teardown_appcontext(close_db)
-	app.cli.add_command(init_db_command)"""
+	app.cli.add_command(init_db_command)
