@@ -4,7 +4,21 @@ Perfect Fit Patterns created using Flask
 A web app to allow users to create made-to-measure sewing patterns tailored to their own measurements
 
 # Instructions
-To run the app
+Install and activate python venv first.
+
+```
+$ cd PFPF-APP
+On macOS and Linux:
+python3 -m venv env
+source env/bin/activate
+
+On Windows:
+py -m venv env
+.\env\Scripts\activate
+```
+
+To run the app, cd into the PFPF-APP directory and run the app
+
 ```
 $ cd PFPF-APP
 $ flask run
