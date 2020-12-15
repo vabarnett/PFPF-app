@@ -1,8 +1,10 @@
 from app import app
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from app.form import LoginForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Measurements
+from app import db
+from app.form import RegistrationForm
 
 
 @app.route('/')
@@ -14,12 +16,12 @@ def index():
 def login():
 	#to prevent logged in users returning to the log in page
 	if current_user.is_authenticated:
-		return redirect(url_for('index'))#working
+		return redirect(url_for('index'))
 	form = LoginForm()
 	if form.validate_on_submit():
 		user= User.query.filter_by(username=form.username.data).first()
 		if user is None or not user.check_password(form.password.data):
-			flash('Invalid username or password')#working
+			flash('Invalid username or password')
 			return redirect(url_for('login'))
 		login_user(user, remember=form.remember_me.data)
 		next_page = request.args.get('next')
@@ -32,3 +34,17 @@ def login():
 def logout():
 	logout_user()
 	return redirect(url_for('login'))
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+	if current_user.is_authenticated:
+		return redirect(url_for('index'))
+	form = RegistrationForm()
+	if form.validate_on_submit():
+		user = User(username=form.username.data, email=form.email.data)
+		user.set_password(form.password.data)
+		db.session.add(user)
+		db.session.commit()
+		flash('Congratulations, you are now a registered user!')
+		return redirect(url_for('login'))
+	return render_template('register.html', title='Register', form=form)
