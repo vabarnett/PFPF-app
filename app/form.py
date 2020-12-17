@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField 
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, SubmitField 
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User 
 
 
@@ -28,3 +28,13 @@ class RegistrationForm(FlaskForm):
 		user = User.query.filter_by(email=email.data).first()
 		if user is not None:
 			raise ValidationError('Please use a different email address.')
+
+class EditMeasurementsForm(FlaskForm):
+	username = StringField('Username', validators=[DataRequired()])
+	waist = TextAreaField('Waist', validators=[Length(min = 0, max = 10)])
+	bust = TextAreaField('Chest', validators=[Length(min = 0, max = 10)])
+	hips = TextAreaField('Hips', validators=[Length(min = 0, max = 10)])
+	w2k = TextAreaField('Waist to knee', validators=[Length(min = 0, max = 10)])
+	k2a = TextAreaField('Knee to ankle', validators=[Length(min = 0, max = 10)])
+	submit = SubmitField('Submit')
+	
