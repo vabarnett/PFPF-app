@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Enter/edit details</h1>
+    <form action=" " method = "post">
+    	{{ form.hidden_tag() }}
+    	<p>
+    		{{ form.username.label }}<br>
+    		{{ form.username(size=32) }}<br>
+    		{% for error in form.username.errors %}
+    		<span style="color: red;">[{{ error }}]</span>
+    		{% endfor %}
+    	</p>
+    	<p>
+    		{{ form.waist.label }}<br>
+    		{{ form.waist(cols=10, rows=1) }}<br>
+    		{% for error in form.waist.errors %}
+    		<span style="color: red;">[{{ error}}]</span>
+    		{% endfor %}
+    	</p>
+    	<p>
+    		{{ form.bust.label }}<br>
+    		{{ form.bust(cols=10, rows=1) }}<br>
+    		{% for error in form.bust.errors %}
+    		<span style="color: red;">[{{ error}}]</span>
+    		{% endfor %}
+    	</p><p>
+    		{{ form.hips.label }}<br>
+    		{{ form.hips(cols=10, rows=1) }}<br>
+    		{% for error in form.hips.errors %}
+    		<span style="color: red;">[{{ error}}]</span>
+    		{% endfor %}
+    	</p><p>
+    		{{ form.w2k.label }}<br>
+    		{{ form.w2k(cols=10, rows=1) }}<br>
+    		{% for error in form.w2k.errors %}
+    		<span style="color: red;">[{{ error}}]</span>
+    		{% endfor %}
+    	</p><p>
+    		{{ form.k2a.label }}<br>
+    		{{ form.k2a(cols=10, rows=1) }}<br>
+    		{% for error in form.k2a.errors %}
+    		<span style="color: red;">[{{ error}}]</span>
+    		{% endfor %}
+    	</p>
+    	<p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
+
