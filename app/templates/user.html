@@ -1,6 +1,20 @@
-{% extends base.html %}
+{% extends "base.html" %}
 
 {% block content %}
-    <h1>User: {{ user.username }}</h1>
-    <p>Your measurements are: ...  </p>
+    {% if user == current_user %}
+    <p><a href="{{ url_for('edit_measurements') }}">Edit your details.</a></p>
+    {% endif %}
+    <table>
+    	<tr valign="top">
+    		<td><img src="{{user.avatar(50) }}"></td>
+    		<td>
+    			<h1>User: {{ user.username }}</h1>
+    			{% if user.waist %}<p>Waist measurement: {{ user.waist }}</p>{% endif %}<br>
+                {% if user.bust %}<p>Chest measurement: {{ user.bust }}</p>{% endif %}<br>
+                {% if user.hips %}<p>Hips measurement: {{ user.hips }}</p>{% endif %}<br>
+                {% if user.w2k %}<p>Waist to knee measurement: {{ user.w2k }}</p>{% endif %}<br>
+                {% if user.k2a %}<p>Knee to ankle measurement: {{ user.k2a }}</p>{% endif %}<br>
+    		</td>
+        </tr>
+    </table>
 {% endblock %}
