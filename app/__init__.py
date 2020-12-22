@@ -9,9 +9,9 @@ app.config.from_object(Config)
 
 app.config["SECRET_KEY"] = "very-secret-word"
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)  # Flask mega tutorial
+migrate = Migrate(app, db)  
 login = LoginManager(app)
 login.login_view = 'login'
 
-from app import routes, models
+from app import routes, models, errors
 
