@@ -3,3 +3,5 @@ __pycache__
 .vscode
 app.db
 migrations
+__pycache__/PFPF.cpython-38.pyc
+*.pyc
