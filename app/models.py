@@ -15,7 +15,7 @@ class User(UserMixin, db.Model):
     hips = db.Column(db.Float(10))
     w2k = db.Column(db.Float(10))
     k2a = db.Column(db.Float(10))
-    Measurements = db.relationship('Measurements', backref = 'user', lazy='dynamic')
+    
 
     def set_password(self, password):
    	    self.password_hash=generate_password_hash(password)
@@ -31,15 +31,6 @@ class User(UserMixin, db.Model):
     	return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
     		digest, size)
 
-class Measurements(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	waist = db.Column(db.Float(10))
-	hips = db.Column(db.Float(10))
-	bust = db.Column(db.Float(10))
-	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-	def __repr__(self):
-		return '<Measurements {}>'.format(self.waist, self.hips, self.bust) 
 
 @login.user_loader
 def Load_User(id):
