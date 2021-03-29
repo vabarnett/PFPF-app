@@ -15,7 +15,7 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
-if not app.debug:#this section should add error reporting by email but does not seem to be working yet
+"""if not app.debug:#this section should add error reporting by email but does not seem to be working yet
 	if app.config['MAIL_SERVER']:
 		auth = None
 		if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
@@ -29,7 +29,7 @@ if not app.debug:#this section should add error reporting by email but does not 
 			toaddrs=app.config['ADMINS'], subject='PFPF Error',
 			credentials=auth, secure=secure)
 		mail_handler.setLevel(logging.ERROR)
-		app.logger.addHandler(mail_handler)
+		app.logger.addHandler(mail_handler)"""
 
 
 from app import routes, models, errors
