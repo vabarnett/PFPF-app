@@ -77,4 +77,4 @@ def edit_measurements():
 		form=form)
 @app.route('/light')#testing a little Javascript with buttons to change a GIF 
 def light():
-	return render_template('light.html', title='light')
+	return render_template('light.html', title='Pattern')
