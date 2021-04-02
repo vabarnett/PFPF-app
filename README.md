@@ -24,7 +24,7 @@ $ cd PFPF-APP
 $ flask run
 ```
 
-The app.db file stores all the data for this app using SQLite. This is git ignored, and on a new project this can be initialized with the following commands
+The app.db file stores all the data for this app using SQLLite. This is git ignored, and on a new project this can be initialized with the following commands
 
 ```
 $ flask db init
