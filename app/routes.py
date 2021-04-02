@@ -24,7 +24,10 @@ def login():
 			flash('Invalid username or password')
 			return redirect(url_for('login'))
 		login_user(user, remember=form.remember_me.data)
-		return redirect(url_for('index'))#directs to homepage
+		next_page = request.args.get('next')
+		if not next_page or url_parse(next_page).netloc != ' ':
+			next_page = url_for('index')
+		return redirect(next_page)
 	return render_template('login.html', title='Login', form=form)
 
 @app.route('/logout')
@@ -75,6 +78,3 @@ def edit_measurements():
 		form.k2a.data = current_user.k2a
 	return render_template('edit_measurements.html', title='Edit Profile',
 		form=form)
-@app.route('/light')#testing a little Javascript with buttons to change a GIF 
-def light():
-	return render_template('light.html', title='light')
