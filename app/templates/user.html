@@ -3,7 +3,7 @@
 {% block content %}
     {% if user == current_user %}
     <p><a href="{{ url_for('edit_measurements') }}">Edit your details.</a></p>
-    <p><a href="{{ url_for('light') }}">Click here to generate pattern.</a></p>
+    <p><a href="{{ url_for('index') }}">Click here to go back.</a></p>
     {% endif %}
     <table>
     	<tr valign="top">
