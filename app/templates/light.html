@@ -1,8 +1,18 @@
-<!-- testing the creation of an HTML canvas to link with Javascript content -->
+<!-- This is a piece of HTML with Javascript to test how it fits into the webb app -->
 <html>
-        <meta charset="utf-8"/>Where is my pattern?
-	    <body onload="draw();">
-	    	<canvas id="canvas" width="150" height="150"></canvas>
-	    	<script src="scripts/test1.js"></script>
-    </body>
+<body>
+
+<h2>What Can JavaScript Do?</h2>
+
+<p>JavaScript can change HTML attribute values.</p>
+
+<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+
+<img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+
+</body>
 </html>
